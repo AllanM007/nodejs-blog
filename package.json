@@ -1,0 +1,29 @@
+{
+  "name": "nodejs-blog",
+  "version": "1.0.0",
+  "description": "Beginner NodeJS Blog",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node index.js",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AllanM007/nodejs-blog.git"
+  },
+  "keywords": [
+    "NodeJS",
+    "Blog"
+  ],
+  "author": "Allan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AllanM007/nodejs-blog/issues"
+  },
+  "homepage": "https://github.com/AllanM007/nodejs-blog#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.14",
+    "startbootstrap-clean-blog": "^6.0.7"
+  }
+}
