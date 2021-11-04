@@ -23,6 +23,7 @@
   "homepage": "https://github.com/AllanM007/nodejs-blog#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "express-edge": "^2.0.2",
     "nodemon": "^2.0.14",
     "startbootstrap-clean-blog": "^6.0.7"
   }
