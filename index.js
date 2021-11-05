@@ -3,6 +3,8 @@ const path = require('path');
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const fileUpload = require("express-fileupload");
+
 const Post = require('./database/models/Post');
 
 
@@ -13,6 +15,7 @@ mongoose.connect('mongodb://localhost:27017/nodejs-blog', { useNewUrlParser: tru
     .catch(err => console.error('Something went wrong', err))
 
 app.use(express.static('public'));
+app.use(fileUpload());
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
     extended: true
@@ -32,6 +35,21 @@ app.get('/', async (req, res) => {
 app.get('/posts/new', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'pages/create.html'));
 })
+
+app.post("/posts/store", (req, res) => {
+    const {
+        image
+    } = req.files
+
+    image.mv(path.resolve(__dirname, 'public/posts', image.name), (error) => {
+        Post.create({
+            ...req.body,
+            image: `/posts/${image.name}`
+        }, (error, post) => {
+            res.redirect('/');
+        });
+    })
+});
 
 app.get('/post', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'pages/post.html'));
